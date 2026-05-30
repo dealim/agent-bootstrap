@@ -36,16 +36,8 @@ Replace-Placeholders ".cursorrules"
 Replace-Placeholders ".agent-memory/INDEX.md"
 Replace-Placeholders ".agent-memory/project.md"
 Replace-Placeholders ".agent-memory/workflows.md"
-Replace-Placeholders ".codex/README.md"
-Replace-Placeholders ".codex/memories/project.md"
 
-# 3. Rename Codex Memory file
-if (Test-Path ".codex/memories/project.md") {
-    Write-Host "Renaming Codex memory file to: .codex/memories/$projectNameLower.md"
-    Rename-Item -Path ".codex/memories/project.md" -NewName "$projectNameLower.md" -Force
-}
-
-# 4. Create Symbolic Links (Symlinks on Windows can be tricky and may require Admin privileges)
+# 3. Create Symbolic Links (Symlinks on Windows can be tricky and may require Admin privileges)
 Write-Host "Creating symbolic links for CLAUDE.md and GEMINI.md..."
 if (Test-Path "CLAUDE.md") { Remove-Item "CLAUDE.md" -Force }
 if (Test-Path "GEMINI.md") { Remove-Item "GEMINI.md" -Force }
@@ -73,7 +65,7 @@ catch {
     }
 }
 
-# 5. Optional git clean-up recommendation
+# 4. Optional git clean-up recommendation
 $resetGit = Read-Host "Would you like to re-initialize Git for this project? (y/n)"
 if ($resetGit -eq 'y' -or $resetGit -eq 'Y') {
     if (Test-Path ".git") { Remove-Item ".git" -Recurse -Force }

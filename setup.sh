@@ -47,16 +47,8 @@ replace_placeholders ".cursorrules"
 replace_placeholders ".agent-memory/INDEX.md"
 replace_placeholders ".agent-memory/project.md"
 replace_placeholders ".agent-memory/workflows.md"
-replace_placeholders ".codex/README.md"
-replace_placeholders ".codex/memories/project.md"
 
-# 3. Rename Codex Memory file
-if [ -f ".codex/memories/project.md" ]; then
-    echo -e "Renaming Codex memory file to: .codex/memories/${PROJECT_NAME_LOWER}.md"
-    mv ".codex/memories/project.md" ".codex/memories/${PROJECT_NAME_LOWER}.md"
-fi
-
-# 4. Create Symbolic Links
+# 3. Create Symbolic Links
 echo -e "Re-creating symbolic links for CLAUDE.md and GEMINI.md..."
 rm -f CLAUDE.md GEMINI.md
 ln -s AGENTS.md CLAUDE.md
@@ -64,7 +56,7 @@ ln -s AGENTS.md GEMINI.md
 
 echo -e "${GREEN}✓ Symbolic links created successfully.${NC}"
 
-# 5. Optional git clean-up recommendation
+# 4. Optional git clean-up recommendation
 echo -e "\n${YELLOW}Would you like to re-initialize Git for this project? (y/n)${NC}"
 read -r -p "This will delete the bootstrap git history and start fresh: " reset_git
 

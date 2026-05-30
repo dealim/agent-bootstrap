@@ -2,7 +2,7 @@
 
 A generalized, plug-and-play template for bootstrapping AI-agent-assisted software development in any project. This structure is generalized from the agent development workflow used in **connex-v3**.
 
-By setting up a standardized entrypoint (`AGENTS.md`), symlinks, and structured memory directories, this skeleton helps AI coding assistants (like Claude, Gemini, Cursor, Codex, and others) maintain context, track progress, log issues, and adhere to coding rules seamlessly across sessions.
+By setting up a standardized entrypoint (`AGENTS.md`), symlinks, and structured memory directories, this skeleton helps AI coding assistants (like Claude, Gemini, Cursor, and others) maintain context, track progress, log issues, and adhere to coding rules seamlessly across sessions.
 
 ---
 
@@ -17,10 +17,6 @@ By setting up a standardized entrypoint (`AGENTS.md`), symlinks, and structured 
 │   ├── INDEX.md                # Entry point for agent memory
 │   ├── project.md              # Project history, architectural findings, and known issues
 │   └── workflows.md            # Project-specific business logic & workflow guidelines
-├── .codex/                     # Local memory for Codex-based agents
-│   ├── README.md               # Codex instructions
-│   └── memories/
-│       └── [project-name].md   # Project-specific memory file for Codex
 └── docs/
     └── superpowers/
         └── plans/
@@ -53,7 +49,6 @@ We provide helper scripts to automatically rename files, replace placeholders wi
 
 The script will:
 - Replace `{{PROJECT_NAME}}` placeholders across all memory and rules files.
-- Rename the Codex memory file to match your project name.
 - Recreate symbolic links for `CLAUDE.md` and `GEMINI.md` pointing to `AGENTS.md`.
 - Ask if you want to re-initialize Git to clear the bootstrap skeleton's git history.
 
