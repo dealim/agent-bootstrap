@@ -71,35 +71,8 @@ else
     echo -e "${BLUE}Skipped git re-initialization. Existing .git remains intact.${NC}"
 fi
 
-# 5. Optional Pre-commit Hook Installation
-echo -e "\n${YELLOW}Would you like to install the memory validation pre-commit hook? (y/n)${NC}"
-read -r -p "This will run validate_memory.py automatically before each commit: " install_hook
-
-if [[ "$install_hook" =~ ^[Yy]$ ]]; then
-    if [ -d ".git" ]; then
-        mkdir -p .git/hooks
-        cat > .git/hooks/pre-commit << 'EOF'
-#!/usr/bin/env bash
-# Pre-commit hook to validate agent memory formatting
-if [ -f "./validate_memory.py" ]; then
-    python3 ./validate_memory.py
-    if [ $? -ne 0 ]; then
-        echo -e "\033[0;31mError: Agent memory validation failed. Commit aborted.\033[0m"
-        exit 1
-    fi
-fi
-EOF
-        chmod +x .git/hooks/pre-commit
-        echo -e "${GREEN}✓ Pre-commit hook installed successfully.${NC}"
-    else
-        echo -e "${RED}Warning: Not a git repository. Skipped hook installation.${NC}"
-    fi
-fi
-
 echo -e "\n${BLUE}==============================================${NC}"
 echo -e "${GREEN}    Initialization Complete! Feel free to code. ${NC}"
 echo -e "    Entrypoint: ${GREEN}AGENTS.md${NC} (linked to CLAUDE/GEMINI)"
 echo -e "    Shared Memory: ${GREEN}.agent-memory/INDEX.md${NC}"
-echo -e "    Validation Tool: Run ${GREEN}./validate_memory.py${NC}"
-echo -e "    Archiving Tool: Run ${GREEN}./archive_memory.py${NC}"
 echo -e "${BLUE}==============================================${NC}"

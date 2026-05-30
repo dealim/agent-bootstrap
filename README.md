@@ -13,16 +13,13 @@ By setting up a standardized entrypoint (`AGENTS.md`), symlinks, and structured 
 ├── CLAUDE.md                   # Symbolic link to AGENTS.md (for Claude Code / Claude Desktop)
 ├── GEMINI.md                   # Symbolic link to AGENTS.md (for Gemini Developer tools)
 ├── .cursorrules                # Root rule file for Cursor Editor
-├── .gitignore                  # Git ignore file ignoring env secrets & python caches
+├── .gitignore                  # Git ignore file ignoring local env secrets
 ├── .env.example                # Example template for local environment variables
-├── validate_memory.py          # Python script to validate project.md formatting
-├── archive_memory.py           # Python script to archive stale logs (token bloat management)
 ├── setup.sh                    # macOS/Linux initialization script
 └── .agent-memory/              # Shared, durable agent memory logs
     ├── INDEX.md                # Entry point for agent memory
     ├── project.md              # Project history, architectural findings, and known issues
-    ├── workflows.md            # Project-specific business logic & workflow guidelines
-    └── archive/                # Folder containing monthly markdown archives of older logs
+    └── workflows.md            # Project-specific business logic & workflow guidelines
 ```
 
 ---
@@ -47,7 +44,6 @@ The script will:
 - Replace `{{PROJECT_NAME}}` placeholders across all memory and rules files (including `.env.example`).
 - Recreate symbolic links for `CLAUDE.md` and `GEMINI.md` pointing to `AGENTS.md`.
 - Ask if you want to re-initialize Git to clear the bootstrap skeleton's git history.
-- Ask if you want to install the Git pre-commit hook for automated memory validation.
 
 ---
 
@@ -66,19 +62,6 @@ When AI agents work inside this repository, they are instructed to log their fin
 * **Symptom (현상)**: Detailed description of the problem or observed behavior.
 * **Root Cause (원인)**: Technical cause identified through analysis.
 * **Resolution/Next Steps (해결 방안 및 조치)**: Specific code changes or commands executed to resolve the issue.
-
----
-
-## 🔧 Memory Log Validation & Archiving
-
-To maintain the quality and token efficiency of your agent memory, the skeleton includes automated scripts:
-
-### 1. Format Validation (`./validate_memory.py`)
-Checks if `.agent-memory/project.md` complies with formatting standards (correct headers, `YYYY-MM-DD | AgentName` log format, and required fields like Symptom, Root Cause, and Resolution).
-* **Git Pre-commit Hook**: During `./setup.sh`, you can install this validation script as a pre-commit hook to abort commits if the log files are malformed.
-
-### 2. Auto-Archiving (`./archive_memory.py`)
-Prunes entries in `project.md` that are older than 30 days and moves them to `.agent-memory/archive/archive-YYYY-MM.md` grouped by month. It guarantees that at least 3 recent entries are kept in the main file so it never remains empty, avoiding token bloat in agent context windows.
 
 ---
 

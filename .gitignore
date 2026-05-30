@@ -8,11 +8,6 @@
 .AppleDouble
 .LSOverride
 
-# Python build and cache files (for our memory tools)
-__pycache__/
-*.py[cod]
-*$py.class
-.pytest_cache/
 
 # Local logs & temp files
 *.log

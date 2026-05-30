@@ -15,9 +15,6 @@ This file is the shared project instruction file for AI agents (Codex, Claude, G
 - Before starting substantial work, read `.agent-memory/INDEX.md` and any linked files relevant to your task.
 - Keep durable, cross-tool project context (architectural findings, known issues) in `.agent-memory/`.
 - Keep tool-specific or private preferences out of `.agent-memory/`.
-- **Memory Automation**:
-  - After updating `project.md`, always run [validate_memory.py](file://./validate_memory.py) to check format compliance.
-  - Run [archive_memory.py](file://./archive_memory.py) to prune and archive old logs when they exceed 30 days.
 
 ### 작업 메모리 기록 및 분류 규칙 (Memory Logs & Classification)
 

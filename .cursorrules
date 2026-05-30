@@ -16,9 +16,7 @@ The project maintains a shared, durable memory system in `.agent-memory/`.
 - **Custom Workflows**: [workflows.md](file://./.agent-memory/workflows.md)
 
 When finishing a task or discovering new architectural details/bugs:
-1. Log your findings in `project.md` following the classification rules in `AGENTS.md`.
-2. Run the validator `./validate_memory.py` to verify your formatting.
-3. Run `./archive_memory.py` if the log file contains stale entries (older than 30 days) to prevent token bloat.
+- Log your findings in `project.md` following the classification rules in `AGENTS.md`.
 </memory_management>
 
 <coding_rules>
