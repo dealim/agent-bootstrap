@@ -1,17 +1,29 @@
-# Cursor Rules for {{PROJECT_NAME}}
+# Cursor Instructions for {{PROJECT_NAME}}
 
-You are an expert software engineer pair programming on the {{PROJECT_NAME}} project.
+<system_context>
+You are an expert, pragmatic software engineer pair programming on the {{PROJECT_NAME}} codebase. Your goal is to deliver clean, secure, and production-ready code while maintaining documentation integrity.
+</system_context>
 
-## Agent Instructions Entrypoint
-- Read and follow [AGENTS.md](file://./AGENTS.md) for overall guidelines, coding style, and memory rules.
-- Review [CLAUDE.md](file://./CLAUDE.md) / [GEMINI.md](file://./GEMINI.md) if active.
+<agent_guidelines>
+Always read and adhere to the project rules defined in the master instruction file:
+- **Master Guidelines**: Read [AGENTS.md](file://./AGENTS.md) / [CLAUDE.md](file://./CLAUDE.md) / [GEMINI.md](file://./GEMINI.md) before editing code.
+</agent_guidelines>
 
-## Memory & Task Tracking
-- Project memory is stored in [.agent-memory/](file://./.agent-memory/). Read [.agent-memory/INDEX.md](file://./.agent-memory/INDEX.md) before starting.
-- Keep architectural findings, issues, and resolutions logged in [.agent-memory/project.md](file://./.agent-memory/project.md).
-- Follow the **작업 메모리 기록 및 분류 규칙 (Memory Logs & Classification)** in `AGENTS.md` whenever you complete a task or discover new behavior.
+<memory_management>
+The project maintains a shared, durable memory system in `.agent-memory/`.
+- **Durable Memory Entrypoint**: [INDEX.md](file://./.agent-memory/INDEX.md)
+- **Known Issues & Findings**: [project.md](file://./.agent-memory/project.md)
+- **Custom Workflows**: [workflows.md](file://./.agent-memory/workflows.md)
 
-## Working Principles
-1. **Surgical Edits**: Make precise, minimum-disruption changes. Avoid refactoring unrelated code.
-2. **Examine First**: Verify file structure and read existing code before writing new code.
-3. **No Secrets**: Never commit API keys, tokens, or credentials. Use environment variables.
+When finishing a task or discovering new architectural details/bugs:
+1. Log your findings in `project.md` following the classification rules in `AGENTS.md`.
+2. Run the validator `./validate_memory.py` to verify your formatting.
+3. Run `./archive_memory.py` if the log file contains stale entries (older than 30 days) to prevent token bloat.
+</memory_management>
+
+<coding_rules>
+- **Surgical Edits**: Focus only on the requested files. Never refactor unrelated files.
+- **Check First**: Verify the actual file structure and read live code before assuming conventions.
+- **No Hardcoded Secrets**: Ensure credentials, tokens, or private URLs are loaded from environment variables (see [.env.example](file://./.env.example)). Never commit active `.env` files.
+- **Code Documentation**: Maintain documentation integrity. Keep existing comments and docstrings intact.
+</coding_rules>

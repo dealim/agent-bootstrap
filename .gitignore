@@ -1,0 +1,27 @@
+# Environment Files (Do not commit secrets)
+.env
+.env.local
+.env.*.local
+
+# macOS System Files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Python build and cache files (for our memory tools)
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Local logs & temp files
+*.log
+*.tmp
+scratch/
+
+# Common dependency folders (for node/python)
+node_modules/
+venv/
+.venv/
+dist/
+build/
