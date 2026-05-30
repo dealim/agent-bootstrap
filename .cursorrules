@@ -6,24 +6,23 @@ Your goal is to deliver clean, secure, and production-ready code while maintaini
 </system_context>
 
 <agent_guidelines>
-Always read and adhere to the project rules defined in the master instruction file:
-- **Master Guidelines**: Read [AGENTS.md](file://./AGENTS.md) before editing code.
-- `CLAUDE.md` / `GEMINI.md` are symbolic links pointing to the same file.
+Read [AGENTS.md](file://./AGENTS.md) before editing code. `CLAUDE.md` / `GEMINI.md` are symlinks to the same file.
 </agent_guidelines>
 
-<memory_lifecycle>
-This project uses a 3-tier memory lifecycle. Read [INDEX.md](file://./.agent-memory/INDEX.md) first.
+<memory_system>
+Agent memory lives in `.agent-memory/`. Read [INDEX.md](file://./.agent-memory/INDEX.md) first.
 
-| Tier | Location | Purpose |
-|------|----------|---------|
-| 1 - Plans | `docs/plans/` | Implementation plans (create before large changes) |
-| 2 - Findings | `.agent-memory/project.md` | Issue logs, bug causes, architectural discoveries |
-| 3 - Standards | `.agent-memory/workflows.md` | Finalized deployment rules, API standards, conventions |
+| File | When to read | Content |
+|------|-------------|---------|
+| context.md | Always | Project overview, tech stack, current state |
+| decisions.md | Before code changes | Confirmed conventions, deploy rules, ADRs |
+| issues.md | When debugging | Past issues, bug causes, resolutions |
 
-When finishing a task:
-- Log discoveries in `project.md` (tier 2) following the format in `AGENTS.md`.
-- If a pattern becomes a permanent rule, promote it to `workflows.md` (tier 3).
-</memory_lifecycle>
+After completing work:
+- Log issues/discoveries → `issues.md` (newest first)
+- Confirmed rules/patterns → promote to `decisions.md`
+- Project state changes → update `context.md`
+</memory_system>
 
 <coding_rules>
 - **Surgical Edits**: Focus only on the requested files. Never refactor unrelated files.

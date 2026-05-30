@@ -1,20 +1,25 @@
-# Shared Agent Memory - {{PROJECT_NAME}}
+# Agent Memory Index - {{PROJECT_NAME}}
 
-이 디렉토리는 AI 에이전트(Claude, Gemini, Cursor 등)의 공유 프로젝트 메모리입니다.
-**작업 시작 전 이 파일을 먼저 읽고**, 작업과 관련된 파일만 열어주세요.
+> **이 파일을 가장 먼저 읽으세요.** 작업 목적에 맞는 메모리 파일만 선택적으로 열어 토큰을 절약합니다.
 
-## Memory Lifecycle
+## 어떤 파일을 읽어야 하나요?
 
-에이전트의 지식은 3단계로 관리됩니다. 자세한 규칙은 [AGENTS.md](file://../AGENTS.md)를 참고하세요.
+| 지금 하려는 작업 | 읽을 파일 | 설명 |
+|-----------------|----------|------|
+| 프로젝트 파악, 간단한 질문 | [context.md](file://./context.md) | 기술 스택, 핵심 경로, 현재 상태 |
+| 코드 변경, 새 기능 개발 | [context.md](file://./context.md) + [decisions.md](file://./decisions.md) | 컨벤션, 아키텍처 결정 사항 확인 후 작업 |
+| 버그 수정, 장애 대응 | [context.md](file://./context.md) + [issues.md](file://./issues.md) | 과거 유사 이슈와 해결 이력 참조 |
+| 배포, 인프라 작업 | [context.md](file://./context.md) + [decisions.md](file://./decisions.md) | 배포 규칙과 환경 설정 확인 |
 
-| 단계 | 위치 | 역할 |
-|------|------|------|
-| 1단계 - 계획 | [docs/plans/](file://../../docs/plans/) | 작업 전 계획서 작성 및 유저 승인 |
-| 2단계 - 발견 기록 | [project.md](file://./project.md) | 이슈, 버그 원인, 아키텍처 발견사항 누적 |
-| 3단계 - 영구 가이드 | [workflows.md](file://./workflows.md) | 확정된 배포 규칙, API 표준, 반복 패턴 |
+## 파일별 역할
 
-## Update Rules
+- **context.md** — 프로젝트 개요와 현재 상태. 짧고 최신 상태를 유지. **매 세션 시작 시 반드시 읽기.**
+- **decisions.md** — 확정된 아키텍처 결정, 코딩 컨벤션, 배포 규칙. 변하지 않는 사실만 기록.
+- **issues.md** — 발견된 이슈, 버그 원인, 해결 이력을 날짜순으로 누적. 가장 빠르게 커지는 파일.
 
-- `project.md`는 **날짜 역순(최신이 위)** 으로 기록합니다.
-- `workflows.md`는 **확정된 규칙만** 기록합니다. 일시적인 이슈 로그는 `project.md`에 남깁니다.
-- 시크릿, 토큰, 크리덴셜은 절대 기록하지 않습니다.
+## 기록 규칙
+
+- 작업 완료 후 발견한 사실은 **issues.md**에 날짜 역순으로 기록
+- 반복 패턴이 확인되면 **decisions.md**로 승격
+- **context.md**는 프로젝트 상황이 바뀔 때만 갱신 (스택 추가, 구조 변경 등)
+- 시크릿, 토큰, 크리덴셜은 어떤 파일에도 기록 금지

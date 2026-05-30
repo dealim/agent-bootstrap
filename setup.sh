@@ -45,8 +45,9 @@ replace_placeholders() {
 replace_placeholders "AGENTS.md"
 replace_placeholders ".cursorrules"
 replace_placeholders ".agent-memory/INDEX.md"
-replace_placeholders ".agent-memory/project.md"
-replace_placeholders ".agent-memory/workflows.md"
+replace_placeholders ".agent-memory/context.md"
+replace_placeholders ".agent-memory/decisions.md"
+replace_placeholders ".agent-memory/issues.md"
 replace_placeholders ".env.example"
 replace_placeholders "docs/plans/TEMPLATE.md"
 

@@ -8,74 +8,66 @@ AI 에이전트(Claude, Gemini, Cursor 등) 기반 소프트웨어 개발을 위
 ## 📁 Repository Structure
 
 ```text
-├── AGENTS.md                       # 에이전트 마스터 지침 파일 (엔트리포인트)
+├── AGENTS.md                       # 에이전트 마스터 지침 (엔트리포인트)
 ├── CLAUDE.md -> AGENTS.md          # Claude용 심볼릭 링크
 ├── GEMINI.md -> AGENTS.md          # Gemini용 심볼릭 링크
-├── .cursorrules                    # Cursor 에디터용 구조화 프롬프트 규칙
-├── .gitignore                      # 환경 설정, 시스템 파일 무시 규칙
-├── .env.example                    # 환경 변수 설정 템플릿
+├── .cursorrules                    # Cursor 에디터용 구조화 프롬프트
+├── .gitignore
+├── .env.example                    # 환경 변수 템플릿
 ├── setup.sh                        # 프로젝트 초기화 스크립트
 ├── docs/
-│   └── plans/                      # 1단계: 구현 계획서 보관
+│   └── plans/                      # 구현 계획서 보관
 │       └── TEMPLATE.md             # 계획서 작성 템플릿
 └── .agent-memory/                  # 에이전트 공유 메모리
-    ├── INDEX.md                    # 메모리 엔트리포인트
-    ├── project.md                  # 2단계: 이슈/발견사항 누적 로그
-    └── workflows.md               # 3단계: 확정된 배포 규칙/표준 가이드
+    ├── INDEX.md                    # 라우터: 어떤 파일을 읽을지 안내
+    ├── context.md                  # 프로젝트 개요, 기술 스택, 현재 상태
+    ├── decisions.md                # 확정된 컨벤션, 배포 규칙, ADR
+    └── issues.md                   # 이슈/버그 원인/해결 이력 (날짜순 누적)
 ```
 
 ---
 
 ## 🚀 Getting Started
 
-### 1. Clone & Initialize
 ```bash
 git clone git@github.com:dealim/agent-bootstrap.git my-new-project
 cd my-new-project
 ./setup.sh "MyProjectName"
 ```
 
-The script will:
-- `{{PROJECT_NAME}}` 플레이스홀더를 프로젝트 이름으로 일괄 치환
-- `CLAUDE.md`, `GEMINI.md` 심볼릭 링크 재생성
-- Git 히스토리 초기화 여부 선택
+---
+
+## 🧠 Agent Memory System
+
+에이전트가 **"지금 뭘 하려는가"**에 따라 필요한 파일만 선택적으로 읽어 토큰을 절약합니다.
+
+### INDEX.md — 라우터
+
+| 지금 하려는 작업 | 읽을 파일 |
+|-----------------|----------|
+| 프로젝트 파악, 간단한 질문 | `context.md` |
+| 코드 변경, 새 기능 개발 | `context.md` + `decisions.md` |
+| 버그 수정, 장애 대응 | `context.md` + `issues.md` |
+| 배포, 인프라 작업 | `context.md` + `decisions.md` |
+
+### context.md — 항상 읽는 파일
+프로젝트 개요, 기술 스택, 핵심 경로, 현재 상태.
+**짧고 최신 상태를 유지**합니다. 매 세션 시작 시 반드시 읽습니다.
+
+### decisions.md — 변경 작업 시 읽는 파일
+확정된 아키텍처 결정(ADR), 코딩 컨벤션, 배포 규칙.
+**변하지 않는 사실만** 기록합니다. `issues.md`에서 반복 패턴이 확인되면 승격됩니다.
+
+### issues.md — 디버깅 시 읽는 파일
+발견된 이슈, 버그 원인, 해결 이력을 **날짜 역순으로 누적**합니다.
+가장 빠르게 커지는 파일이지만, 디버깅할 때만 읽으므로 토큰 낭비가 없습니다.
 
 ---
 
-## 🧠 3-Tier Memory Lifecycle
+## 📋 Plans
 
-에이전트의 지식과 의사결정은 3단계를 거쳐 체계적으로 관리됩니다.
-
-```
-┌─────────────────┐     완료 후 핵심 발견 기록     ┌──────────────────┐     반복 패턴 승격     ┌──────────────────┐
-│  1단계: 계획     │  ──────────────────────────▶  │  2단계: 발견 기록  │  ────────────────▶  │  3단계: 영구 가이드 │
-│  docs/plans/    │                               │  project.md      │                     │  workflows.md    │
-│                 │                               │                  │                     │                  │
-│  작업 전 계획서   │                               │  이슈, 버그 원인,  │                     │  배포 규칙, API 표준│
-│  작성 & 유저 승인 │                               │  아키텍처 발견사항  │                     │  코딩 컨벤션       │
-└─────────────────┘                               └──────────────────┘                     └──────────────────┘
-```
-
-### 1단계: 계획 (Plans)
-| 항목 | 내용 |
-|------|------|
-| **위치** | `docs/plans/YYYY-MM-DD-[기능명].md` |
-| **시점** | 큰 작업이나 아키텍처 변경 **이전** |
-| **규칙** | [TEMPLATE.md](docs/plans/TEMPLATE.md) 양식 사용, 완료 후 수정 금지 (히스토리 보존) |
-
-### 2단계: 발견 기록 (Durable Memory)
-| 항목 | 내용 |
-|------|------|
-| **위치** | `.agent-memory/project.md` |
-| **시점** | 작업 **완료 후** 즉시 |
-| **규칙** | 날짜 역순, 카테고리별 분류, 현상/원인/해결 3항목 필수 |
-
-### 3단계: 영구 가이드 (Standards & Workflows)
-| 항목 | 내용 |
-|------|------|
-| **위치** | `.agent-memory/workflows.md` |
-| **시점** | 2단계에서 반복 패턴이 확인되었을 때 |
-| **규칙** | 확정된 규칙만 기록, 일시적 이슈 로그 금지 |
+큰 작업이나 아키텍처 변경 전에는 `docs/plans/`에 계획서를 작성합니다.
+[TEMPLATE.md](docs/plans/TEMPLATE.md) 양식을 사용하고, 완료된 계획서는 수정하지 않고 히스토리로 보존합니다.
 
 ---
 
