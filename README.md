@@ -13,14 +13,10 @@ By setting up a standardized entrypoint (`AGENTS.md`), symlinks, and structured 
 ├── CLAUDE.md                   # Symbolic link to AGENTS.md (for Claude Code / Claude Desktop)
 ├── GEMINI.md                   # Symbolic link to AGENTS.md (for Gemini Developer tools)
 ├── .cursorrules                # Root rule file for Cursor Editor
-├── .agent-memory/              # Shared, durable agent memory logs
-│   ├── INDEX.md                # Entry point for agent memory
-│   ├── project.md              # Project history, architectural findings, and known issues
-│   └── workflows.md            # Project-specific business logic & workflow guidelines
-└── docs/
-    └── superpowers/
-        └── plans/
-            └── template-plan.md # Standard markdown template for agent implementation plans
+└── .agent-memory/              # Shared, durable agent memory logs
+    ├── INDEX.md                # Entry point for agent memory
+    ├── project.md              # Project history, architectural findings, and known issues
+    └── workflows.md            # Project-specific business logic & workflow guidelines
 ```
 
 ---
@@ -63,12 +59,6 @@ When AI agents work inside this repository, they are instructed to log their fin
 * **Symptom (현상)**: Detailed description of the problem or observed behavior.
 * **Root Cause (원인)**: Technical cause identified through analysis.
 * **Resolution/Next Steps (해결 방안 및 조치)**: Specific code changes or commands executed to resolve the issue.
-
----
-
-## 📋 Implementation Plans
-
-For complex feature development, agents are encouraged to create structured markdown plans under `docs/superpowers/plans/` using the provided [template-plan.md](file://./docs/superpowers/plans/template-plan.md). This helps ensure alignment with users or other developers before writing any code.
 
 ---
 
