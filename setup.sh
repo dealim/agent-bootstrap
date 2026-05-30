@@ -1,7 +1,15 @@
 #!/usr/bin/env bash
 
+if [ -z "${BASH_VERSION:-}" ]; then
+    echo "Please run with bash: ./setup.sh \"MyProjectName\""
+    exit 1
+fi
+
 # Exit immediately if a command exits with a non-zero status
-set -e
+set -euo pipefail
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
 
 # ANSI Color Codes for beautiful terminal output
 GREEN='\033[0;32m'
@@ -15,7 +23,7 @@ echo -e "${BLUE}      Agent Skeleton Bootstrap Initializer    ${NC}"
 echo -e "${BLUE}==============================================${NC}"
 
 # 1. Get Project Name
-PROJECT_NAME="$1"
+PROJECT_NAME="${1:-}"
 
 if [ -z "$PROJECT_NAME" ]; then
     read -p "Enter project name (e.g. MyAwesomeApp): " PROJECT_NAME
@@ -32,13 +40,21 @@ PROJECT_NAME_LOWER=$(echo "$PROJECT_NAME" | tr '[:upper:]' '[:lower:]')
 echo -e "\nInitializing agent structure for project: ${GREEN}${PROJECT_NAME}${NC} (${PROJECT_NAME_LOWER})"
 
 # 2. Replace placeholders in files
+escape_sed_replacement() {
+    printf '%s' "$1" | sed 's/[\/&\]/\\&/g'
+}
+
+PROJECT_NAME_ESCAPED="$(escape_sed_replacement "$PROJECT_NAME")"
+PROJECT_NAME_LOWER_ESCAPED="$(escape_sed_replacement "$PROJECT_NAME_LOWER")"
+
 replace_placeholders() {
     local file="$1"
     if [ -f "$file" ]; then
         echo -e "Processing: ${file}"
         # Use a temporary file to avoid empty/corrupt files with sed on macOS/Linux
-        sed "s/{{PROJECT_NAME}}/${PROJECT_NAME}/g; s/{{PROJECT_NAME_LOWER}}/${PROJECT_NAME_LOWER}/g" "$file" > "${file}.tmp"
-        mv "${file}.tmp" "$file"
+        local tmp="${file}.tmp.$$"
+        sed "s/{{PROJECT_NAME}}/${PROJECT_NAME_ESCAPED}/g; s/{{PROJECT_NAME_LOWER}}/${PROJECT_NAME_LOWER_ESCAPED}/g" "$file" > "$tmp"
+        mv "$tmp" "$file"
     fi
 }
 
@@ -53,9 +69,21 @@ replace_placeholders "docs/plans/TEMPLATE.md"
 
 # 3. Create Symbolic Links
 echo -e "Re-creating symbolic links for CLAUDE.md and GEMINI.md..."
-rm -f CLAUDE.md GEMINI.md
-ln -s AGENTS.md CLAUDE.md
-ln -s AGENTS.md GEMINI.md
+ensure_agent_symlink() {
+    local link="$1"
+    if [ -L "$link" ] && [ "$(readlink "$link")" = "AGENTS.md" ]; then
+        return
+    fi
+    if [ -e "$link" ] || [ -L "$link" ]; then
+        echo -e "${RED}Error: Refusing to overwrite existing ${link}.${NC}"
+        echo -e "Remove it manually if you want ${link} to point to AGENTS.md."
+        exit 1
+    fi
+    ln -s AGENTS.md "$link"
+}
+
+ensure_agent_symlink "CLAUDE.md"
+ensure_agent_symlink "GEMINI.md"
 
 echo -e "${GREEN}✓ Symbolic links created successfully.${NC}"
 
@@ -64,10 +92,35 @@ echo -e "\n${YELLOW}Would you like to re-initialize Git for this project? (y/n)$
 read -r -p "This will delete the bootstrap git history and start fresh: " reset_git
 
 if [[ "$reset_git" =~ ^[Yy]$ ]]; then
-    rm -rf .git
-    git init
-    git add .
-    git commit -m "Initial commit from agent-bootstrap skeleton"
+    if ! command -v git >/dev/null 2>&1; then
+        echo -e "${RED}Error: git is required to re-initialize the repository.${NC}"
+        exit 1
+    fi
+    if ! git config user.name >/dev/null || ! git config user.email >/dev/null; then
+        echo -e "${RED}Error: git user.name and user.email must be configured before re-initializing.${NC}"
+        exit 1
+    fi
+
+    git_backup=""
+    if [ -d .git ]; then
+        git_backup=".git.backup.$(date +%Y%m%d%H%M%S)"
+        mv .git "$git_backup"
+        echo -e "${YELLOW}Existing .git moved to ${git_backup}.${NC}"
+    fi
+
+    if git init && git add . && git commit -m "Initial commit from agent-bootstrap skeleton"; then
+        if [ -n "$git_backup" ]; then
+            echo -e "${YELLOW}Previous git metadata remains available at ${git_backup}.${NC}"
+        fi
+    else
+        echo -e "${RED}Error: Git re-initialization failed.${NC}"
+        if [ -n "$git_backup" ]; then
+            rm -rf .git
+            mv "$git_backup" .git
+            echo -e "${YELLOW}Restored original .git directory.${NC}"
+        fi
+        exit 1
+    fi
     echo -e "${GREEN}✓ Git repository re-initialized.${NC}"
 else
     echo -e "${BLUE}Skipped git re-initialization. Existing .git remains intact.${NC}"

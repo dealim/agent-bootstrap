@@ -1,6 +1,6 @@
 # Agent Bootstrap Skeleton
 
-AI 에이전트(Claude, Gemini, Cursor 등) 기반 소프트웨어 개발을 위한 범용 스켈레톤 프로젝트입니다.
+AI 에이전트(Claude, Gemini, Cursor, Codex 등) 기반 소프트웨어 개발을 위한 범용 스켈레톤 프로젝트입니다.
 **connex-v3**에서 사용된 에이전트 협업 워크플로우를 일반화하여, 어떤 프로젝트에서든 `git clone` 후 바로 사용할 수 있도록 설계되었습니다.
 
 ---
@@ -22,7 +22,7 @@ AI 에이전트(Claude, Gemini, Cursor 등) 기반 소프트웨어 개발을 위
     ├── INDEX.md                    # 라우터: 어떤 파일을 읽을지 안내
     ├── context.md                  # 프로젝트 개요, 기술 스택, 현재 상태
     ├── decisions.md                # 확정된 컨벤션, 배포 규칙, ADR
-    └── issues.md                   # 이슈/버그 원인/해결 이력 (날짜순 누적)
+    └── issues.md                   # 이슈/버그 원인/해결 이력 (날짜 역순 누적)
 ```
 
 ---
@@ -66,7 +66,7 @@ cd my-new-project
 
 ## 📋 Plans
 
-큰 작업이나 아키텍처 변경 전에는 `docs/plans/`에 계획서를 작성합니다.
+큰 작업이나 아키텍처 변경 전에는 `docs/plans/`에 계획서를 작성하고 유저 승인을 받습니다.
 [TEMPLATE.md](docs/plans/TEMPLATE.md) 양식을 사용하고, 완료된 계획서는 수정하지 않고 히스토리로 보존합니다.
 
 ---

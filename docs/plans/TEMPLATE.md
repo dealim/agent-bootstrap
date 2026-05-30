@@ -46,4 +46,4 @@
 ## Follow-up
 
 작업 완료 후 남은 과제나 후속 작업이 있으면 여기에 기록합니다.
-완료된 결정사항은 `.agent-memory/project.md` 또는 `workflows.md`에 반영합니다.
+완료된 결정사항과 반복 패턴은 `.agent-memory/decisions.md`에, 프로젝트 상태 변경은 `.agent-memory/context.md`에 반영합니다.

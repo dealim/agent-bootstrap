@@ -12,16 +12,16 @@
 
 <!-- 예시:
 
-## [Frontend / UI]
+## 2026-05-31 | AgentName
 
-### AI 버튼이 특정 레이아웃에서 미노출
-`detail` 레이아웃에는 `<AiFloatingButton />`이 없음. `default.vue`에만 정의되어 있으므로
-새 레이아웃을 만들 때 반드시 해당 컴포넌트를 포함해야 함.
+### [Frontend / UI] AI 버튼이 특정 레이아웃에서 미노출
+- **현상**: `detail` 레이아웃에서 AI 버튼이 표시되지 않음.
+- **원인**: `detail` 레이아웃에는 `<AiFloatingButton />`이 없고 `default.vue`에만 정의되어 있음.
+- **해결**: 새 레이아웃을 만들 때 공통 AI 버튼 컴포넌트를 포함하도록 레이아웃 체크리스트에 반영.
 
-## [Deployment / Infra]
-
-### Registry 푸시 누락 시 Pod 이미지 불일치
-로컬에서 빌드만 하고 Registry에 푸시하지 않으면 K8s Pod가 이전 이미지를 계속 사용함.
-빌드 후 반드시 `docker push` 또는 Jenkins 빌드를 통해 Registry에 반영할 것.
+### [Deployment / Infra] Registry 푸시 누락 시 Pod 이미지 불일치
+- **현상**: 배포 후에도 K8s Pod가 이전 이미지를 계속 사용함.
+- **원인**: 로컬에서 이미지만 빌드하고 Registry에 푸시하지 않음.
+- **해결**: 빌드 후 반드시 `docker push` 또는 Jenkins 빌드를 통해 Registry에 반영.
 
 -->
