@@ -7,7 +7,7 @@
 
 - **프로젝트**: {{PROJECT_NAME}}
 - **설명**: *(한 줄로 프로젝트가 무엇인지 작성)*
-- **에이전트 지침**: [AGENTS.md](file://../../AGENTS.md)
+- **에이전트 지침**: [AGENTS.md](../AGENTS.md)
 
 ## Tech Stack
 
@@ -25,8 +25,8 @@
 |------|------|------|
 | 소스코드 | `src/` | |
 | 설정 | `config/` | |
-| 환경 변수 | [.env.example](file://../../.env.example) | 템플릿 |
-| 계획서 | [docs/plans/](file://../../docs/plans/) | |
+| 환경 변수 | [.env.example](../.env.example) | 템플릿 |
+| 계획서 | [docs/plans/](../docs/plans/) | |
 
 ## Current State
 

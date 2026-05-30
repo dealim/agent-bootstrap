@@ -6,11 +6,11 @@ Your goal is to deliver clean, secure, and production-ready code while maintaini
 </system_context>
 
 <agent_guidelines>
-Read [AGENTS.md](file://./AGENTS.md) before editing code. `CLAUDE.md` / `GEMINI.md` are symlinks to the same file.
+Read [AGENTS.md](AGENTS.md) before editing code. `CLAUDE.md` / `GEMINI.md` are symlinks to the same file.
 </agent_guidelines>
 
 <memory_system>
-Agent memory lives in `.agent-memory/`. Read [INDEX.md](file://./.agent-memory/INDEX.md) first.
+Agent memory lives in `.agent-memory/`. Read [INDEX.md](.agent-memory/INDEX.md) first.
 
 | File | When to read | Content |
 |------|-------------|---------|
@@ -27,6 +27,6 @@ After completing work:
 <coding_rules>
 - **Surgical Edits**: Focus only on the requested files. Never refactor unrelated files.
 - **Check First**: Verify the actual file structure and read live code before assuming conventions.
-- **No Hardcoded Secrets**: Load credentials from environment variables. See [.env.example](file://./.env.example).
+- **No Hardcoded Secrets**: Load credentials from environment variables. See [.env.example](.env.example).
 - **Documentation**: Maintain existing comments and docstrings intact.
 </coding_rules>

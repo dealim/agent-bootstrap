@@ -6,7 +6,7 @@
 > **Living Document 원칙**:
 > - 해결되어 더 이상 의미 없는 이슈는 **삭제**합니다 (히스토리는 git이 보관).
 > - 해결되었지만 **다른 에이전트가 또 빠질 수 있는 함정**은 남겨둡니다.
-> - 반복 패턴이 확인되면 [decisions.md](file://./decisions.md)로 승격합니다.
+> - 반복 패턴이 확인되면 [decisions.md](decisions.md)로 승격합니다.
 
 ---
 

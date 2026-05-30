@@ -6,10 +6,10 @@
 
 | 지금 하려는 작업 | 읽을 파일 | 설명 |
 |-----------------|----------|------|
-| 프로젝트 파악, 간단한 질문 | [context.md](file://./context.md) | 기술 스택, 핵심 경로, 현재 상태 |
-| 코드 변경, 새 기능 개발 | [context.md](file://./context.md) + [decisions.md](file://./decisions.md) | 컨벤션, 아키텍처 결정 사항 확인 후 작업 |
-| 버그 수정, 장애 대응 | [context.md](file://./context.md) + [issues.md](file://./issues.md) | 과거 유사 이슈와 해결 이력 참조 |
-| 배포, 인프라 작업 | [context.md](file://./context.md) + [decisions.md](file://./decisions.md) | 배포 규칙과 환경 설정 확인 |
+| 프로젝트 파악, 간단한 질문 | [context.md](context.md) | 기술 스택, 핵심 경로, 현재 상태 |
+| 코드 변경, 새 기능 개발 | [context.md](context.md) + [decisions.md](decisions.md) | 컨벤션, 아키텍처 결정 사항 확인 후 작업 |
+| 버그 수정, 장애 대응 | [context.md](context.md) + [issues.md](issues.md) | 과거 유사 이슈와 해결 이력 참조 |
+| 배포, 인프라 작업 | [context.md](context.md) + [decisions.md](decisions.md) | 배포 규칙과 환경 설정 확인 |
 
 ## 파일별 역할
 
