@@ -35,16 +35,10 @@ cd your-new-project
 ```
 
 ### 2. Run the Initialization Script
-We provide helper scripts to automatically rename files, replace placeholders with your project name, and establish symlinks:
+We provide a helper script to automatically replace placeholders with your project name and establish symlinks:
 
-#### On macOS / Linux:
 ```bash
 ./setup.sh "MyProjectName"
-```
-
-#### On Windows (PowerShell):
-```powershell
-.\setup.ps1 "MyProjectName"
 ```
 
 The script will:
