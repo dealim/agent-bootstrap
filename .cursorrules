@@ -1,0 +1,17 @@
+# Cursor Rules for {{PROJECT_NAME}}
+
+You are an expert software engineer pair programming on the {{PROJECT_NAME}} project.
+
+## Agent Instructions Entrypoint
+- Read and follow [AGENTS.md](file://./AGENTS.md) for overall guidelines, coding style, and memory rules.
+- Review [CLAUDE.md](file://./CLAUDE.md) / [GEMINI.md](file://./GEMINI.md) if active.
+
+## Memory & Task Tracking
+- Project memory is stored in [.agent-memory/](file://./.agent-memory/). Read [.agent-memory/INDEX.md](file://./.agent-memory/INDEX.md) before starting.
+- Keep architectural findings, issues, and resolutions logged in [.agent-memory/project.md](file://./.agent-memory/project.md).
+- Follow the **작업 메모리 기록 및 분류 규칙 (Memory Logs & Classification)** in `AGENTS.md` whenever you complete a task or discover new behavior.
+
+## Working Principles
+1. **Surgical Edits**: Make precise, minimum-disruption changes. Avoid refactoring unrelated code.
+2. **Examine First**: Verify file structure and read existing code before writing new code.
+3. **No Secrets**: Never commit API keys, tokens, or credentials. Use environment variables.
