@@ -48,6 +48,7 @@ replace_placeholders ".agent-memory/INDEX.md"
 replace_placeholders ".agent-memory/project.md"
 replace_placeholders ".agent-memory/workflows.md"
 replace_placeholders ".env.example"
+replace_placeholders "docs/plans/TEMPLATE.md"
 
 # 3. Create Symbolic Links
 echo -e "Re-creating symbolic links for CLAUDE.md and GEMINI.md..."

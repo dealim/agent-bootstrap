@@ -1,34 +1,29 @@
 # Project Memory - {{PROJECT_NAME}}
 
-## Context
-
-- **Repository**: `{{PROJECT_NAME}}`
-- **Shared Agent Entrypoint**: [AGENTS.md](file://../AGENTS.md)
-- **Shared Memory Directory**: [INDEX.md](file://./INDEX.md)
-
-## Working Rules
-
-- Prefer small, focused edits over broad rewrites.
-- Check the current repo structure and live files before assuming conventions.
-- Keep durable, cross-tool context here rather than in tool-private memory.
+> 이 파일은 2단계 메모리입니다. 작업 중 발견한 이슈, 버그 원인, 아키텍처 특이사항을 날짜별로 누적 기록합니다.
+> 새 항목은 각 카테고리의 **맨 위에** 추가합니다.
 
 ## Known Issues & Architectural Findings
 
-*(This section is updated dynamically by AI agents as they work on the codebase. Put new entries at the top of their respective categories with dates.)*
-
 ### [Frontend / UI]
-- *No findings logged yet.*
+
+*(새로운 발견사항을 여기 위에 추가하세요)*
+
+<!-- 예시:
+#### 2026-05-30 | Gemini - AI 버튼이 특정 레이아웃에서 미노출
+- **현상 (Symptom)**: `detail` 레이아웃을 사용하는 페이지에서 AI 플로팅 버튼이 보이지 않음
+- **원인 (Root Cause)**: 해당 버튼은 `default.vue` 레이아웃에만 정의되어 있음
+- **해결 (Resolution)**: `detail.vue`에도 `<AiFloatingButton />` 컴포넌트를 추가
+-->
 
 ### [Backend / API]
-- *No findings logged yet.*
+
+*(새로운 발견사항을 여기 위에 추가하세요)*
 
 ### [Deployment / Infra]
-- *No findings logged yet.*
+
+*(새로운 발견사항을 여기 위에 추가하세요)*
 
 ### [Core / Architecture]
-- *No findings logged yet.*
 
-## Safety & Security
-
-- Do not store secrets, tokens, or machine-specific credentials in this repository.
-- Ensure all sensitive configurations are loaded via environment variables.
+*(새로운 발견사항을 여기 위에 추가하세요)*
