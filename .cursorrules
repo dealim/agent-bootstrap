@@ -10,7 +10,7 @@ Read [AGENTS.md](AGENTS.md) before editing code. `CLAUDE.md` / `GEMINI.md` are s
 </agent_guidelines>
 
 <memory_system>
-Long-lived project memory lives in `memory/`. Execution harnesses live in top-level `plans/`. Read [INDEX.md](memory/INDEX.md) first.
+Long-lived project memory lives in `memory/`. Execution harnesses live in top-level `plans/`. Read [AGENTS.md](memory/AGENTS.md) first.
 
 | Directory | When to read | Content |
 |-----------|-------------|---------|

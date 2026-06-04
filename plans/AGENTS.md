@@ -1,4 +1,4 @@
-# Plans Index - {{PROJECT_NAME}}
+# Plans Agents - {{PROJECT_NAME}}
 
 `plans/`는 큰 작업이나 아키텍처 변경을 독립 세션에서 실행할 수 있도록 쪼갠 dated harness를 보관합니다.
 
@@ -51,7 +51,7 @@ Status values: `pending`, `completed`, `error`, `blocked`.
 
 ## Read First
 
-- memory/INDEX.md
+- memory/AGENTS.md
 - memory/adr/0001-example.md
 
 ## Context

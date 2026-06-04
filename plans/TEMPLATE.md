@@ -30,7 +30,7 @@
 
 이 plan 전체에서 참조할 수 있는 memory 후보를 기록합니다. 각 step은 이 중 실제 필요한 파일만 `Read First`에 포함합니다.
 
-- `memory/INDEX.md`
+- `memory/AGENTS.md`
 - `memory/prd/...`
 - `memory/adr/...`
 - `memory/issues/...`

@@ -1,4 +1,4 @@
-# PRD Index - {{PROJECT_NAME}}
+# PRD Agents - {{PROJECT_NAME}}
 
 `memory/prd/`는 프로젝트 요구사항, 제품/업무 맥락, 현재 상태를 기록하는 문서를 보관합니다.
 

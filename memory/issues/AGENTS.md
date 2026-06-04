@@ -1,4 +1,4 @@
-# Issues Index - {{PROJECT_NAME}}
+# Issues Agents - {{PROJECT_NAME}}
 
 `memory/issues/`는 버그, 장애, 반복되는 함정, 해결 이력을 기록하는 문서를 보관합니다.
 

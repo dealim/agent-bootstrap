@@ -16,15 +16,15 @@ AI 에이전트(Claude, Gemini, Cursor, Codex 등) 기반 소프트웨어 개발
 ├── .env.example                    # 환경 변수 템플릿
 ├── setup.sh                        # 프로젝트 초기화 스크립트
 ├── memory/
-│   ├── INDEX.md                    # 장기 지식 라우터
+│   ├── AGENTS.md                   # 장기 지식 라우터
 │   ├── prd/                        # 프로젝트 요구사항, 제품/업무 맥락, 현재 상태
-│   │   └── INDEX.md                # PRD 문서 작성 규칙
+│   │   └── AGENTS.md               # PRD 문서 작성 규칙
 │   ├── adr/                        # 확정된 결정, 컨벤션, 배포 규칙
-│   │   └── INDEX.md                # ADR 문서 작성 규칙
+│   │   └── AGENTS.md               # ADR 문서 작성 규칙
 │   └── issues/                     # 이슈/버그 원인/해결 이력
-│       └── INDEX.md                # 이슈 문서 작성 규칙
+│       └── AGENTS.md               # 이슈 문서 작성 규칙
 └── plans/
-    ├── INDEX.md                    # dated harness plan 작성 규칙
+    ├── AGENTS.md                   # dated harness plan 작성 규칙
     ├── TEMPLATE.md                 # plan 작성 템플릿
     └── YYYY-MM-DD-plan-name/       # 독립 실행 step 묶음
         ├── index.json
@@ -48,16 +48,16 @@ cd my-new-project
 
 에이전트가 **"지금 뭘 하려는가"**에 따라 필요한 파일만 선택적으로 읽어 토큰을 절약합니다.
 장기 지식은 `memory/` 아래에서 `prd`, `adr`, `issues`로 나누어 보관하고, 실행 harness는 최상위 `plans/`에 둡니다.
-모든 memory 디렉토리는 해당 폴더에 파일을 만드는 규칙과 템플릿을 설명하는 `INDEX.md`를 포함합니다.
+모든 memory/plans 디렉토리는 해당 폴더에서 agent가 어떻게 행동해야 하는지 설명하는 `AGENTS.md`를 포함합니다.
 
-### memory/INDEX.md — 라우터
+### memory/AGENTS.md — 라우터
 
 | 지금 하려는 작업 | 읽을 파일 |
 |-----------------|----------|
-| 프로젝트 파악, 간단한 질문 | `memory/prd/INDEX.md` |
-| 코드 변경, 새 기능 개발 | `memory/prd/INDEX.md` + `memory/adr/INDEX.md` |
-| 버그 수정, 장애 대응 | `memory/prd/INDEX.md` + `memory/issues/INDEX.md` |
-| 배포, 인프라 작업 | `memory/prd/INDEX.md` + `memory/adr/INDEX.md` |
+| 프로젝트 파악, 간단한 질문 | `memory/prd/AGENTS.md` |
+| 코드 변경, 새 기능 개발 | `memory/prd/AGENTS.md` + `memory/adr/AGENTS.md` |
+| 버그 수정, 장애 대응 | `memory/prd/AGENTS.md` + `memory/issues/AGENTS.md` |
+| 배포, 인프라 작업 | `memory/prd/AGENTS.md` + `memory/adr/AGENTS.md` |
 | plan step 실행 | `plans/YYYY-MM-DD-plan-name/stepN-slug.md`의 `Read First` 목록 |
 
 ### prd/ — 항상 읽는 디렉토리

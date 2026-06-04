@@ -1,4 +1,4 @@
-# ADR Index - {{PROJECT_NAME}}
+# ADR Agents - {{PROJECT_NAME}}
 
 `memory/adr/`는 확정된 아키텍처 결정, 코딩 컨벤션, 배포 규칙을 기록하는 문서를 보관합니다.
 

@@ -15,15 +15,15 @@
 
 프로젝트의 장기 지식은 `memory/`에, 실행 계획과 step harness는 최상위 `plans/`에 보관합니다.
 
-**작업 시작 전**: [INDEX.md](memory/INDEX.md)를 읽고, 작업 목적에 맞는 memory 파일만 선택적으로 읽으세요.
+**작업 시작 전**: [AGENTS.md](memory/AGENTS.md)를 읽고, 작업 목적에 맞는 memory 파일만 선택적으로 읽으세요.
 특정 plan을 실행할 때는 `plans/YYYY-MM-DD-{plan-name}/stepN-{slug}.md`의 `Read First` 목록을 우선합니다.
 
 | 디렉토리 | 언제 읽나 | 내용 |
 |----------|----------|------|
-| [memory/prd/](memory/prd/INDEX.md) | 요구사항 확인 시 | 프로젝트 요구사항, 제품/업무 맥락, 현재 상태 |
-| [memory/adr/](memory/adr/INDEX.md) | 코드 변경·배포 시 | 확정된 컨벤션, 배포 규칙, 아키텍처 결정 |
-| [memory/issues/](memory/issues/INDEX.md) | 디버깅·장애 대응 시 | 과거 이슈, 버그 원인, 해결 이력 |
-| [plans/](plans/INDEX.md) | 큰 작업·아키텍처 변경 전 | dated plan과 독립 실행 step |
+| [memory/prd/](memory/prd/AGENTS.md) | 요구사항 확인 시 | 프로젝트 요구사항, 제품/업무 맥락, 현재 상태 |
+| [memory/adr/](memory/adr/AGENTS.md) | 코드 변경·배포 시 | 확정된 컨벤션, 배포 규칙, 아키텍처 결정 |
+| [memory/issues/](memory/issues/AGENTS.md) | 디버깅·장애 대응 시 | 과거 이슈, 버그 원인, 해결 이력 |
+| [plans/](plans/AGENTS.md) | 큰 작업·아키텍처 변경 전 | dated plan과 독립 실행 step |
 
 ### 기록 규칙
 
@@ -51,7 +51,7 @@
 ## Plans
 
 큰 작업이나 아키텍처 변경 전에는 `plans/YYYY-MM-DD-{plan-name}/`에 plan과 step 파일을 작성하고 유저 승인을 받습니다.
-- [INDEX.md](plans/INDEX.md)를 읽고 [TEMPLATE.md](plans/TEMPLATE.md) 양식을 사용합니다.
+- [AGENTS.md](plans/AGENTS.md)를 읽고 [TEMPLATE.md](plans/TEMPLATE.md) 양식을 사용합니다.
 - 각 `stepN-{slug}.md`는 독립 세션에서 실행 가능하도록 `Read First`, `Task`, `Acceptance Criteria`를 포함합니다.
 
 ## Working Rules
