@@ -11,25 +11,28 @@
 
 ---
 
-## Agent Memory
+## Memory & Plans
 
-에이전트의 공유 메모리는 `.agent-memory/` 디렉토리에 있습니다.
+프로젝트의 장기 지식은 `memory/`에, 실행 계획과 step harness는 최상위 `plans/`에 보관합니다.
 
-**작업 시작 전**: [INDEX.md](.agent-memory/INDEX.md)를 읽고, 작업 목적에 맞는 파일만 선택적으로 읽으세요.
+**작업 시작 전**: [INDEX.md](memory/INDEX.md)를 읽고, 작업 목적에 맞는 memory 파일만 선택적으로 읽으세요.
+특정 plan을 실행할 때는 `plans/YYYY-MM-DD-{plan-name}/stepN-{slug}.md`의 `Read First` 목록을 우선합니다.
 
-| 파일 | 언제 읽나 | 내용 |
-|------|----------|------|
-| [context.md](.agent-memory/context.md) | **항상** | 프로젝트 개요, 기술 스택, 현재 상태 |
-| [decisions.md](.agent-memory/decisions.md) | 코드 변경·배포 시 | 확정된 컨벤션, 배포 규칙, 아키텍처 결정 |
-| [issues.md](.agent-memory/issues.md) | 디버깅·장애 대응 시 | 과거 이슈, 버그 원인, 해결 이력 |
+| 디렉토리 | 언제 읽나 | 내용 |
+|----------|----------|------|
+| [memory/prd/](memory/prd/INDEX.md) | 요구사항 확인 시 | 프로젝트 요구사항, 제품/업무 맥락, 현재 상태 |
+| [memory/adr/](memory/adr/INDEX.md) | 코드 변경·배포 시 | 확정된 컨벤션, 배포 규칙, 아키텍처 결정 |
+| [memory/issues/](memory/issues/INDEX.md) | 디버깅·장애 대응 시 | 과거 이슈, 버그 원인, 해결 이력 |
+| [plans/](plans/INDEX.md) | 큰 작업·아키텍처 변경 전 | dated plan과 독립 실행 step |
 
 ### 기록 규칙
 
 **작업 완료 후** 발견한 사실을 반드시 기록합니다:
 
-1. **이슈/버그/발견사항** → `issues.md`에 날짜 역순으로 추가
-2. **확정된 규칙/패턴** → `decisions.md`로 승격
-3. **프로젝트 상태 변경** → `context.md` 갱신
+1. **요구사항/프로젝트 상태 변경** → `memory/prd/` 갱신
+2. **확정된 규칙/패턴/아키텍처 결정** → `memory/adr/`에 기록
+3. **이슈/버그/발견사항** → `memory/issues/`에 날짜 역순으로 추가
+4. **큰 작업 계획** → `plans/YYYY-MM-DD-{plan-name}/`에 작성 후 승인
 
 이슈 기록 양식:
 ```
@@ -47,9 +50,9 @@
 
 ## Plans
 
-큰 작업이나 아키텍처 변경 전에는 `docs/plans/`에 계획서를 작성하고 유저 승인을 받습니다.
-- [TEMPLATE.md](docs/plans/TEMPLATE.md) 양식을 사용합니다.
-- 완료된 계획서는 수정하지 않고 히스토리로 보존합니다.
+큰 작업이나 아키텍처 변경 전에는 `plans/YYYY-MM-DD-{plan-name}/`에 plan과 step 파일을 작성하고 유저 승인을 받습니다.
+- [INDEX.md](plans/INDEX.md)를 읽고 [TEMPLATE.md](plans/TEMPLATE.md) 양식을 사용합니다.
+- 각 `stepN-{slug}.md`는 독립 세션에서 실행 가능하도록 `Read First`, `Task`, `Acceptance Criteria`를 포함합니다.
 
 ## Working Rules
 

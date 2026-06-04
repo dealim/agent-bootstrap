@@ -60,12 +60,13 @@ replace_placeholders() {
 
 replace_placeholders "AGENTS.md"
 replace_placeholders ".cursorrules"
-replace_placeholders ".agent-memory/INDEX.md"
-replace_placeholders ".agent-memory/context.md"
-replace_placeholders ".agent-memory/decisions.md"
-replace_placeholders ".agent-memory/issues.md"
+replace_placeholders "memory/INDEX.md"
+replace_placeholders "memory/prd/INDEX.md"
+replace_placeholders "memory/adr/INDEX.md"
+replace_placeholders "memory/issues/INDEX.md"
+replace_placeholders "plans/INDEX.md"
 replace_placeholders ".env.example"
-replace_placeholders "docs/plans/TEMPLATE.md"
+replace_placeholders "plans/TEMPLATE.md"
 
 # 3. Create Symbolic Links
 echo -e "Re-creating symbolic links for CLAUDE.md and GEMINI.md..."
@@ -129,5 +130,6 @@ fi
 echo -e "\n${BLUE}==============================================${NC}"
 echo -e "${GREEN}    Initialization Complete! Feel free to code. ${NC}"
 echo -e "    Entrypoint: ${GREEN}AGENTS.md${NC} (linked to CLAUDE/GEMINI)"
-echo -e "    Shared Memory: ${GREEN}.agent-memory/INDEX.md${NC}"
+echo -e "    Memory Index: ${GREEN}memory/INDEX.md${NC}"
+echo -e "    Plans Index: ${GREEN}plans/INDEX.md${NC}"
 echo -e "${BLUE}==============================================${NC}"

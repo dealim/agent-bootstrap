@@ -15,14 +15,21 @@ AI 에이전트(Claude, Gemini, Cursor, Codex 등) 기반 소프트웨어 개발
 ├── .gitignore
 ├── .env.example                    # 환경 변수 템플릿
 ├── setup.sh                        # 프로젝트 초기화 스크립트
-├── docs/
-│   └── plans/                      # 구현 계획서 보관
-│       └── TEMPLATE.md             # 계획서 작성 템플릿
-└── .agent-memory/                  # 에이전트 공유 메모리
-    ├── INDEX.md                    # 라우터: 어떤 파일을 읽을지 안내
-    ├── context.md                  # 프로젝트 개요, 기술 스택, 현재 상태
-    ├── decisions.md                # 확정된 컨벤션, 배포 규칙, ADR
-    └── issues.md                   # 이슈/버그 원인/해결 이력 (날짜 역순 누적)
+├── memory/
+│   ├── INDEX.md                    # 장기 지식 라우터
+│   ├── prd/                        # 프로젝트 요구사항, 제품/업무 맥락, 현재 상태
+│   │   └── INDEX.md                # PRD 문서 작성 규칙
+│   ├── adr/                        # 확정된 결정, 컨벤션, 배포 규칙
+│   │   └── INDEX.md                # ADR 문서 작성 규칙
+│   └── issues/                     # 이슈/버그 원인/해결 이력
+│       └── INDEX.md                # 이슈 문서 작성 규칙
+└── plans/
+    ├── INDEX.md                    # dated harness plan 작성 규칙
+    ├── TEMPLATE.md                 # plan 작성 템플릿
+    └── YYYY-MM-DD-plan-name/       # 독립 실행 step 묶음
+        ├── index.json
+        ├── step0-slug.md
+        └── step1-slug.md
 ```
 
 ---
@@ -37,28 +44,31 @@ cd my-new-project
 
 ---
 
-## 🧠 Agent Memory System
+## 🧠 Memory & Plans System
 
 에이전트가 **"지금 뭘 하려는가"**에 따라 필요한 파일만 선택적으로 읽어 토큰을 절약합니다.
+장기 지식은 `memory/` 아래에서 `prd`, `adr`, `issues`로 나누어 보관하고, 실행 harness는 최상위 `plans/`에 둡니다.
+모든 memory 디렉토리는 해당 폴더에 파일을 만드는 규칙과 템플릿을 설명하는 `INDEX.md`를 포함합니다.
 
-### INDEX.md — 라우터
+### memory/INDEX.md — 라우터
 
 | 지금 하려는 작업 | 읽을 파일 |
 |-----------------|----------|
-| 프로젝트 파악, 간단한 질문 | `context.md` |
-| 코드 변경, 새 기능 개발 | `context.md` + `decisions.md` |
-| 버그 수정, 장애 대응 | `context.md` + `issues.md` |
-| 배포, 인프라 작업 | `context.md` + `decisions.md` |
+| 프로젝트 파악, 간단한 질문 | `memory/prd/INDEX.md` |
+| 코드 변경, 새 기능 개발 | `memory/prd/INDEX.md` + `memory/adr/INDEX.md` |
+| 버그 수정, 장애 대응 | `memory/prd/INDEX.md` + `memory/issues/INDEX.md` |
+| 배포, 인프라 작업 | `memory/prd/INDEX.md` + `memory/adr/INDEX.md` |
+| plan step 실행 | `plans/YYYY-MM-DD-plan-name/stepN-slug.md`의 `Read First` 목록 |
 
-### context.md — 항상 읽는 파일
-프로젝트 개요, 기술 스택, 핵심 경로, 현재 상태.
+### prd/ — 항상 읽는 디렉토리
+프로젝트 요구사항, 제품/업무 맥락, 핵심 경로, 현재 상태.
 **짧고 최신 상태를 유지**합니다. 매 세션 시작 시 반드시 읽습니다.
 
-### decisions.md — 변경 작업 시 읽는 파일
+### adr/ — 변경 작업 시 읽는 디렉토리
 확정된 아키텍처 결정(ADR), 코딩 컨벤션, 배포 규칙.
-**변하지 않는 사실만** 기록합니다. `issues.md`에서 반복 패턴이 확인되면 승격됩니다.
+**변하지 않는 사실만** 기록합니다. `issues/`에서 반복 패턴이 확인되면 승격됩니다.
 
-### issues.md — 디버깅 시 읽는 파일
+### issues/ — 디버깅 시 읽는 디렉토리
 발견된 이슈, 버그 원인, 해결 이력을 **날짜 역순으로 누적**합니다.
 가장 빠르게 커지는 파일이지만, 디버깅할 때만 읽으므로 토큰 낭비가 없습니다.
 
@@ -66,8 +76,8 @@ cd my-new-project
 
 ## 📋 Plans
 
-큰 작업이나 아키텍처 변경 전에는 `docs/plans/`에 계획서를 작성하고 유저 승인을 받습니다.
-[TEMPLATE.md](docs/plans/TEMPLATE.md) 양식을 사용하고, 완료된 계획서는 수정하지 않고 히스토리로 보존합니다.
+큰 작업이나 아키텍처 변경 전에는 `plans/YYYY-MM-DD-plan-name/`에 plan과 step 파일을 작성하고 유저 승인을 받습니다.
+[TEMPLATE.md](plans/TEMPLATE.md) 양식을 사용하고, 각 `stepN-slug.md`는 독립 세션에서 실행 가능하도록 `Read First`, `Task`, `Acceptance Criteria`를 포함합니다.
 
 ---
 
