@@ -75,10 +75,18 @@ ensure_agent_symlink() {
     if [ -L "$link" ] && [ "$(readlink "$link")" = "AGENTS.md" ]; then
         return
     fi
-    if [ -e "$link" ] || [ -L "$link" ]; then
-        echo -e "${RED}Error: Refusing to overwrite existing ${link}.${NC}"
-        echo -e "Remove it manually if you want ${link} to point to AGENTS.md."
-        exit 1
+    if [ -L "$link" ]; then
+        echo -e "${YELLOW}Replacing existing symlink ${link}.${NC}"
+        rm "$link"
+    elif [ -e "$link" ]; then
+        if cmp -s "$link" "AGENTS.md"; then
+            echo -e "${YELLOW}Replacing duplicate ${link} with symlink to AGENTS.md.${NC}"
+            rm "$link"
+        else
+            local backup="${link}.backup.$(date +%Y%m%d%H%M%S)"
+            echo -e "${YELLOW}Existing ${link} differs from AGENTS.md; moving it to ${backup}.${NC}"
+            mv "$link" "$backup"
+        fi
     fi
     ln -s AGENTS.md "$link"
 }
