@@ -15,6 +15,7 @@
 
 - 프로젝트 파악, 간단한 질문: [prd/AGENTS.md](prd/AGENTS.md)
 - 코드 변경, 새 기능 개발: [prd/AGENTS.md](prd/AGENTS.md) + [adr/AGENTS.md](adr/AGENTS.md)
+- UI 개발·수정: [prd/AGENTS.md](prd/AGENTS.md) + [prd/DESIGN.md](prd/DESIGN.md) + 해당 기능 PRD의 `User Experience` + 관련 ADR
 - 버그 수정, 장애 대응: [prd/AGENTS.md](prd/AGENTS.md) + [issues/AGENTS.md](issues/AGENTS.md)
 - 배포, 인프라 작업: [prd/AGENTS.md](prd/AGENTS.md) + [adr/AGENTS.md](adr/AGENTS.md)
 - plan 실행 작업: 현재 `plans/YYYY-MM-DD-{plan-name}/stepN-{slug}.md`의 `Read First` 목록

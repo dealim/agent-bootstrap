@@ -18,7 +18,8 @@ AI 에이전트(Claude, Gemini, Cursor, Codex 등) 기반 소프트웨어 개발
 ├── memory/
 │   ├── AGENTS.md                   # 장기 지식 라우터
 │   ├── prd/                        # 프로젝트 요구사항, 제품/업무 맥락, 현재 상태
-│   │   └── AGENTS.md               # PRD 문서 작성 규칙
+│   │   ├── AGENTS.md               # PRD 문서 작성 규칙
+│   │   └── DESIGN.md               # 공통 디자인 원칙, 접근성·반응형, UI 재사용 규칙
 │   ├── adr/                        # 확정된 결정, 컨벤션, 배포 규칙
 │   │   └── AGENTS.md               # ADR 문서 작성 규칙
 │   └── issues/                     # 이슈/버그 원인/해결 이력
@@ -37,7 +38,7 @@ AI 에이전트(Claude, Gemini, Cursor, Codex 등) 기반 소프트웨어 개발
 ## 🚀 Getting Started
 
 ```bash
-git clone git@github.com:dealim/agent-bootstrap.git my-new-project
+git clone https://github.com/dealim/agent-bootstrap.git my-new-project
 cd my-new-project
 ./setup.sh "MyProjectName"
 ```
@@ -56,6 +57,7 @@ cd my-new-project
 |-----------------|----------|
 | 프로젝트 파악, 간단한 질문 | `memory/prd/AGENTS.md` |
 | 코드 변경, 새 기능 개발 | `memory/prd/AGENTS.md` + `memory/adr/AGENTS.md` |
+| UI 개발·수정 | `memory/prd/AGENTS.md` + `memory/prd/DESIGN.md` + 해당 기능 PRD의 `User Experience` + 관련 ADR |
 | 버그 수정, 장애 대응 | `memory/prd/AGENTS.md` + `memory/issues/AGENTS.md` |
 | 배포, 인프라 작업 | `memory/prd/AGENTS.md` + `memory/adr/AGENTS.md` |
 | plan step 실행 | `plans/YYYY-MM-DD-plan-name/stepN-slug.md`의 `Read First` 목록 |
@@ -63,6 +65,8 @@ cd my-new-project
 ### prd/ — 항상 읽는 디렉토리
 프로젝트 요구사항, 제품/업무 맥락, 핵심 경로, 현재 상태.
 **짧고 최신 상태를 유지**합니다. 매 세션 시작 시 반드시 읽습니다.
+
+UI 작업에서는 [DESIGN.md](memory/prd/DESIGN.md)의 공통 디자인·접근성·반응형·UI 재사용 규칙과 기능 PRD의 `User Experience`를 함께 읽습니다. 화면 구성, 버튼 문구, 사용자 흐름, 화면별 상태는 기능 PRD에 기록하고 공통 원칙 문서에 섞지 않습니다. 앱 초기화 시 실제 UI 스택과 공유 컴포넌트 규칙을 `DESIGN.md`에 반영합니다.
 
 ### adr/ — 변경 작업 시 읽는 디렉토리
 확정된 아키텍처 결정(ADR), 코딩 컨벤션, 배포 규칙.

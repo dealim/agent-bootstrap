@@ -17,6 +17,7 @@
 
 **작업 시작 전**: [AGENTS.md](memory/AGENTS.md)를 읽고, 작업 목적에 맞는 memory 파일만 선택적으로 읽으세요.
 특정 plan을 실행할 때는 `plans/YYYY-MM-DD-{plan-name}/stepN-{slug}.md`의 `Read First` 목록을 우선합니다.
+UI 작업 시에는 [DESIGN.md](memory/prd/DESIGN.md)와 해당 기능 PRD의 `User Experience`를 함께 읽습니다.
 
 | 디렉토리 | 언제 읽나 | 내용 |
 |----------|----------|------|

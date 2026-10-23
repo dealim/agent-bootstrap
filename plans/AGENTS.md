@@ -53,6 +53,7 @@ Status values: `pending`, `completed`, `error`, `blocked`.
 
 - memory/AGENTS.md
 - memory/adr/0001-example.md
+- UI 작업 시 memory/prd/DESIGN.md와 해당 기능 PRD의 User Experience
 
 ## Context
 
@@ -65,6 +66,7 @@ Status values: `pending`, `completed`, `error`, `blocked`.
 ## Acceptance Criteria
 
 실행 가능한 검증 명령 또는 확인 절차를 작성합니다.
+UI 작업은 기능 PRD의 시나리오를 실제 인터페이스에서 검증합니다. 빌드·테스트 통과만으로 UI 완료를 판단하지 않습니다.
 
 ## Update On Completion
 
