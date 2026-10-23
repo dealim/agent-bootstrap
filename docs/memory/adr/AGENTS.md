@@ -1,6 +1,6 @@
 # ADR Agents - {{PROJECT_NAME}}
 
-`memory/adr/`는 확정된 아키텍처 결정, 코딩 컨벤션, 배포 규칙을 기록하는 문서를 보관합니다.
+`docs/memory/adr/`는 확정된 아키텍처 결정, 코딩 컨벤션, 배포 규칙을 기록하는 문서를 보관합니다.
 
 ## When To Read
 
@@ -13,7 +13,7 @@
 - ADR 문서는 `NNNN-short-title.md` 형식으로 작성합니다. 예: `0001-use-pinia.md`
 - 번호는 4자리 연속 숫자를 사용합니다.
 - 파일명은 소문자 kebab-case를 사용합니다.
-- 확정된 사실만 기록합니다. 논의 중이거나 일시적인 내용은 `memory/issues/` 또는 `plans/`에 남깁니다.
+- 확정된 사실만 기록합니다. 논의 중이거나 일시적인 내용은 `docs/memory/issues/` 또는 `docs/plans/`에 남깁니다.
 - 이미 완료된 ADR은 수정하지 않고, 변경이 필요하면 새 ADR을 추가합니다.
 
 ## Document Template
@@ -48,5 +48,5 @@ Proposed | Accepted | Deprecated | Superseded
 
 ## Recording Rules
 
-- 반복 이슈가 확정된 규칙이 되면 `memory/issues/`에서 ADR로 승격합니다.
-- 요구사항 배경은 `memory/prd/`, 구현 계획은 `plans/`에 연결합니다.
+- 반복 이슈가 확정된 규칙이 되면 `docs/memory/issues/`에서 ADR로 승격합니다.
+- 요구사항 배경은 `docs/memory/prd/`, 구현 계획은 `docs/plans/`에 연결합니다.

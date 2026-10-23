@@ -1,6 +1,6 @@
 # Plans Agents - {{PROJECT_NAME}}
 
-`plans/`는 큰 작업이나 아키텍처 변경을 독립 세션에서 실행할 수 있도록 쪼갠 dated harness를 보관합니다.
+`docs/plans/`는 큰 작업이나 아키텍처 변경을 독립 세션에서 실행할 수 있도록 쪼갠 dated harness를 보관합니다.
 
 ## When To Read
 
@@ -19,7 +19,7 @@
 ## Plan Directory Template
 
 ```text
-plans/YYYY-MM-DD-{plan-name}/
+docs/plans/YYYY-MM-DD-{plan-name}/
 ├── index.json
 ├── step0-{slug}.md
 ├── step1-{slug}.md
@@ -51,9 +51,9 @@ Status values: `pending`, `completed`, `error`, `blocked`.
 
 ## Read First
 
-- memory/AGENTS.md
-- memory/adr/0001-example.md
-- UI 작업 시 memory/prd/DESIGN.md와 해당 기능 PRD의 User Experience
+- docs/memory/AGENTS.md
+- docs/memory/adr/0001-example.md
+- UI 작업 시 docs/memory/prd/DESIGN.md와 해당 기능 PRD의 User Experience
 
 ## Context
 
@@ -70,10 +70,10 @@ UI 작업은 기능 PRD의 시나리오를 실제 인터페이스에서 검증�
 
 ## Update On Completion
 
-- 성공 시 `plans/YYYY-MM-DD-{plan-name}/index.json`의 해당 step을 `completed`로 변경
-- 발견한 이슈는 `memory/issues/`
-- 확정된 결정은 `memory/adr/`
-- 요구사항 변경은 `memory/prd/`
+- 성공 시 `docs/plans/YYYY-MM-DD-{plan-name}/index.json`의 해당 step을 `completed`로 변경
+- 발견한 이슈는 `docs/memory/issues/`
+- 확정된 결정은 `docs/memory/adr/`
+- 요구사항 변경은 `docs/memory/prd/`
 
 ## Prohibited
 
@@ -84,4 +84,4 @@ UI 작업은 기능 PRD의 시나리오를 실제 인터페이스에서 검증�
 
 - 큰 작업이나 아키텍처 변경 전에는 dated plan 디렉토리와 step 파일을 작성하고 유저 승인을 받습니다.
 - 각 step의 `Read First` 목록은 해당 독립 세션이 실제로 읽어야 할 memory 파일만 포함합니다.
-- 작업 중 확정된 결정은 `memory/adr/`, 이슈와 해결 이력은 `memory/issues/`, 요구사항과 프로젝트 상태 변경은 `memory/prd/`에 반영합니다.
+- 작업 중 확정된 결정은 `docs/memory/adr/`, 이슈와 해결 이력은 `docs/memory/issues/`, 요구사항과 프로젝트 상태 변경은 `docs/memory/prd/`에 반영합니다.

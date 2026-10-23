@@ -1,6 +1,6 @@
 # PRD Agents - {{PROJECT_NAME}}
 
-`memory/prd/`는 프로젝트 요구사항, 제품/업무 맥락, 현재 상태를 기록하는 문서를 보관합니다.
+`docs/memory/prd/`는 프로젝트 요구사항, 제품/업무 맥락, 현재 상태를 기록하는 문서를 보관합니다.
 
 ## When To Read
 
@@ -63,6 +63,6 @@ UI 변경이 있는 기능에 필수이며, UI 변경이 없으면 생략할 수
 
 ## Recording Rules
 
-- 확정된 기술 결정은 `memory/adr/`에 기록합니다.
-- 버그와 장애 이력은 `memory/issues/`에 기록합니다.
-- 구현 전 계획과 실행 step은 `plans/YYYY-MM-DD-{plan-name}/`에 작성합니다.
+- 확정된 기술 결정은 `docs/memory/adr/`에 기록합니다.
+- 버그와 장애 이력은 `docs/memory/issues/`에 기록합니다.
+- 구현 전 계획과 실행 step은 `docs/plans/YYYY-MM-DD-{plan-name}/`에 작성합니다.

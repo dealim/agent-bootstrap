@@ -10,20 +10,20 @@ Read [AGENTS.md](AGENTS.md) before editing code. `CLAUDE.md` / `GEMINI.md` are s
 </agent_guidelines>
 
 <memory_system>
-Long-lived project memory lives in `memory/`. Execution harnesses live in top-level `plans/`. Read [AGENTS.md](memory/AGENTS.md) first.
+Long-lived project memory lives in `docs/memory/`. Execution harnesses live in `docs/plans/`. Read [AGENTS.md](docs/memory/AGENTS.md) first.
 
 | Directory | When to read | Content |
 |-----------|-------------|---------|
-| memory/prd/ | When requirements or product context are needed | Project requirements, product/business context, current state |
-| memory/adr/ | Before code/deploy/architecture changes | Confirmed conventions, deploy rules, ADRs |
-| memory/issues/ | When debugging | Past issues, bug causes, resolutions |
-| plans/ | Before large work | Dated plan directories and step harness files |
+| docs/memory/prd/ | When requirements or product context are needed | Project requirements, product/business context, current state |
+| docs/memory/adr/ | Before code/deploy/architecture changes | Confirmed conventions, deploy rules, ADRs |
+| docs/memory/issues/ | When debugging | Past issues, bug causes, resolutions |
+| docs/plans/ | Before large work | Dated plan directories and step harness files |
 
 After completing work:
-- Project requirements/state changes → update `memory/prd/`
-- Confirmed rules/patterns/ADRs → record in `memory/adr/`
-- Issues/discoveries → record in `memory/issues/` (newest first)
-- Large implementation plans → write in `plans/YYYY-MM-DD-{plan-name}/`
+- Project requirements/state changes → update `docs/memory/prd/`
+- Confirmed rules/patterns/ADRs → record in `docs/memory/adr/`
+- Issues/discoveries → record in `docs/memory/issues/` (newest first)
+- Large implementation plans → write in `docs/plans/YYYY-MM-DD-{plan-name}/`
 </memory_system>
 
 <coding_rules>

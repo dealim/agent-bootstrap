@@ -30,10 +30,10 @@
 
 이 plan 전체에서 참조할 수 있는 memory 후보를 기록합니다. 각 step은 이 중 실제 필요한 파일만 `Read First`에 포함합니다.
 
-- `memory/AGENTS.md`
-- `memory/prd/...`
-- `memory/adr/...`
-- `memory/issues/...`
+- `docs/memory/AGENTS.md`
+- `docs/memory/prd/...`
+- `docs/memory/adr/...`
+- `docs/memory/issues/...`
 
 ## Acceptance Criteria
 
@@ -44,4 +44,4 @@
 ## Follow-up
 
 작업 완료 후 남은 과제나 후속 작업이 있으면 여기에 기록합니다.
-완료된 결정사항과 반복 패턴은 `memory/adr/`에, 이슈와 해결 이력은 `memory/issues/`에, 요구사항과 프로젝트 상태 변경은 `memory/prd/`에 반영합니다.
+완료된 결정사항과 반복 패턴은 `docs/memory/adr/`에, 이슈와 해결 이력은 `docs/memory/issues/`에, 요구사항과 프로젝트 상태 변경은 `docs/memory/prd/`에 반영합니다.

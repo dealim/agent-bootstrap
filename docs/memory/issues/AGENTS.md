@@ -1,6 +1,6 @@
 # Issues Agents - {{PROJECT_NAME}}
 
-`memory/issues/`는 버그, 장애, 반복되는 함정, 해결 이력을 기록하는 문서를 보관합니다.
+`docs/memory/issues/`는 버그, 장애, 반복되는 함정, 해결 이력을 기록하는 문서를 보관합니다.
 
 ## When To Read
 
@@ -55,5 +55,5 @@ AgentName or HumanName
 
 ## Recording Rules
 
-- 반복 패턴이 확정된 규칙이 되면 `memory/adr/`로 승격합니다.
-- 요구사항 변경이 필요하면 `memory/prd/`에 반영합니다.
+- 반복 패턴이 확정된 규칙이 되면 `docs/memory/adr/`로 승격합니다.
+- 요구사항 변경이 필요하면 `docs/memory/prd/`에 반영합니다.

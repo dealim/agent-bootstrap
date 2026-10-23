@@ -15,22 +15,23 @@ AI 에이전트(Claude, Gemini, Cursor, Codex 등) 기반 소프트웨어 개발
 ├── .gitignore
 ├── .env.example                    # 환경 변수 템플릿
 ├── setup.sh                        # 프로젝트 초기화 스크립트
-├── memory/
-│   ├── AGENTS.md                   # 장기 지식 라우터
-│   ├── prd/                        # 프로젝트 요구사항, 제품/업무 맥락, 현재 상태
-│   │   ├── AGENTS.md               # PRD 문서 작성 규칙
-│   │   └── DESIGN.md               # 공통 디자인 원칙, 접근성·반응형, UI 재사용 규칙
-│   ├── adr/                        # 확정된 결정, 컨벤션, 배포 규칙
-│   │   └── AGENTS.md               # ADR 문서 작성 규칙
-│   └── issues/                     # 이슈/버그 원인/해결 이력
-│       └── AGENTS.md               # 이슈 문서 작성 규칙
-└── plans/
-    ├── AGENTS.md                   # dated harness plan 작성 규칙
-    ├── TEMPLATE.md                 # plan 작성 템플릿
-    └── YYYY-MM-DD-plan-name/       # 독립 실행 step 묶음
-        ├── index.json
-        ├── step0-slug.md
-        └── step1-slug.md
+└── docs/
+    ├── memory/
+    │   ├── AGENTS.md               # 장기 지식 라우터
+    │   ├── prd/                    # 프로젝트 요구사항, 제품/업무 맥락, 현재 상태
+    │   │   ├── AGENTS.md           # PRD 문서 작성 규칙
+    │   │   └── DESIGN.md           # 공통 디자인 원칙, 접근성·반응형, UI 재사용 규칙
+    │   ├── adr/                    # 확정된 결정, 컨벤션, 배포 규칙
+    │   │   └── AGENTS.md           # ADR 문서 작성 규칙
+    │   └── issues/                 # 이슈/버그 원인/해결 이력
+    │       └── AGENTS.md           # 이슈 문서 작성 규칙
+    └── plans/
+        ├── AGENTS.md               # dated harness plan 작성 규칙
+        ├── TEMPLATE.md             # plan 작성 템플릿
+        └── YYYY-MM-DD-plan-name/   # 독립 실행 step 묶음
+            ├── index.json
+            ├── step0-slug.md
+            └── step1-slug.md
 ```
 
 ---
@@ -48,25 +49,25 @@ cd my-new-project
 ## 🧠 Memory & Plans System
 
 에이전트가 **"지금 뭘 하려는가"**에 따라 필요한 파일만 선택적으로 읽어 토큰을 절약합니다.
-장기 지식은 `memory/` 아래에서 `prd`, `adr`, `issues`로 나누어 보관하고, 실행 harness는 최상위 `plans/`에 둡니다.
-모든 memory/plans 디렉토리는 해당 폴더에서 agent가 어떻게 행동해야 하는지 설명하는 `AGENTS.md`를 포함합니다.
+장기 지식은 `docs/memory/` 아래에서 `prd`, `adr`, `issues`로 나누어 보관하고, 실행 harness는 `docs/plans/`에 둡니다.
+모든 `docs/memory/` 및 `docs/plans/` 디렉토리는 해당 폴더에서 agent가 어떻게 행동해야 하는지 설명하는 `AGENTS.md`를 포함합니다.
 
-### memory/AGENTS.md — 라우터
+### docs/memory/AGENTS.md — 라우터
 
 | 지금 하려는 작업 | 읽을 파일 |
 |-----------------|----------|
-| 프로젝트 파악, 간단한 질문 | `memory/prd/AGENTS.md` |
-| 코드 변경, 새 기능 개발 | `memory/prd/AGENTS.md` + `memory/adr/AGENTS.md` |
-| UI 개발·수정 | `memory/prd/AGENTS.md` + `memory/prd/DESIGN.md` + 해당 기능 PRD의 `User Experience` + 관련 ADR |
-| 버그 수정, 장애 대응 | `memory/prd/AGENTS.md` + `memory/issues/AGENTS.md` |
-| 배포, 인프라 작업 | `memory/prd/AGENTS.md` + `memory/adr/AGENTS.md` |
-| plan step 실행 | `plans/YYYY-MM-DD-plan-name/stepN-slug.md`의 `Read First` 목록 |
+| 프로젝트 파악, 간단한 질문 | `docs/memory/prd/AGENTS.md` |
+| 코드 변경, 새 기능 개발 | `docs/memory/prd/AGENTS.md` + `docs/memory/adr/AGENTS.md` |
+| UI 개발·수정 | `docs/memory/prd/AGENTS.md` + `docs/memory/prd/DESIGN.md` + 해당 기능 PRD의 `User Experience` + 관련 ADR |
+| 버그 수정, 장애 대응 | `docs/memory/prd/AGENTS.md` + `docs/memory/issues/AGENTS.md` |
+| 배포, 인프라 작업 | `docs/memory/prd/AGENTS.md` + `docs/memory/adr/AGENTS.md` |
+| plan step 실행 | `docs/plans/YYYY-MM-DD-plan-name/stepN-slug.md`의 `Read First` 목록 |
 
 ### prd/ — 항상 읽는 디렉토리
 프로젝트 요구사항, 제품/업무 맥락, 핵심 경로, 현재 상태.
 **짧고 최신 상태를 유지**합니다. 매 세션 시작 시 반드시 읽습니다.
 
-UI 작업에서는 [DESIGN.md](memory/prd/DESIGN.md)의 공통 디자인·접근성·반응형·UI 재사용 규칙과 기능 PRD의 `User Experience`를 함께 읽습니다. 화면 구성, 버튼 문구, 사용자 흐름, 화면별 상태는 기능 PRD에 기록하고 공통 원칙 문서에 섞지 않습니다. 앱 초기화 시 실제 UI 스택과 공유 컴포넌트 규칙을 `DESIGN.md`에 반영합니다.
+UI 작업에서는 [DESIGN.md](docs/memory/prd/DESIGN.md)의 공통 디자인·접근성·반응형·UI 재사용 규칙과 기능 PRD의 `User Experience`를 함께 읽습니다. 화면 구성, 버튼 문구, 사용자 흐름, 화면별 상태는 기능 PRD에 기록하고 공통 원칙 문서에 섞지 않습니다. 앱 초기화 시 실제 UI 스택과 공유 컴포넌트 규칙을 `DESIGN.md`에 반영합니다.
 
 ### adr/ — 변경 작업 시 읽는 디렉토리
 확정된 아키텍처 결정(ADR), 코딩 컨벤션, 배포 규칙.
@@ -80,8 +81,8 @@ UI 작업에서는 [DESIGN.md](memory/prd/DESIGN.md)의 공통 디자인·접근
 
 ## 📋 Plans
 
-큰 작업이나 아키텍처 변경 전에는 `plans/YYYY-MM-DD-plan-name/`에 plan과 step 파일을 작성하고 유저 승인을 받습니다.
-[TEMPLATE.md](plans/TEMPLATE.md) 양식을 사용하고, 각 `stepN-slug.md`는 독립 세션에서 실행 가능하도록 `Read First`, `Task`, `Acceptance Criteria`를 포함합니다.
+큰 작업이나 아키텍처 변경 전에는 `docs/plans/YYYY-MM-DD-plan-name/`에 plan과 step 파일을 작성하고 유저 승인을 받습니다.
+[TEMPLATE.md](docs/plans/TEMPLATE.md) 양식을 사용하고, 각 `stepN-slug.md`는 독립 세션에서 실행 가능하도록 `Read First`, `Task`, `Acceptance Criteria`를 포함합니다.
 
 ---
 

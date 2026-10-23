@@ -13,27 +13,27 @@
 
 ## Memory & Plans
 
-프로젝트의 장기 지식은 `memory/`에, 실행 계획과 step harness는 최상위 `plans/`에 보관합니다.
+프로젝트의 장기 지식은 `docs/memory/`에, 실행 계획과 step harness는 `docs/plans/`에 보관합니다.
 
-**작업 시작 전**: [AGENTS.md](memory/AGENTS.md)를 읽고, 작업 목적에 맞는 memory 파일만 선택적으로 읽으세요.
-특정 plan을 실행할 때는 `plans/YYYY-MM-DD-{plan-name}/stepN-{slug}.md`의 `Read First` 목록을 우선합니다.
-UI 작업 시에는 [DESIGN.md](memory/prd/DESIGN.md)와 해당 기능 PRD의 `User Experience`를 함께 읽습니다.
+**작업 시작 전**: [AGENTS.md](docs/memory/AGENTS.md)를 읽고, 작업 목적에 맞는 memory 파일만 선택적으로 읽으세요.
+특정 plan을 실행할 때는 `docs/plans/YYYY-MM-DD-{plan-name}/stepN-{slug}.md`의 `Read First` 목록을 우선합니다.
+UI 작업 시에는 [DESIGN.md](docs/memory/prd/DESIGN.md)와 해당 기능 PRD의 `User Experience`를 함께 읽습니다.
 
 | 디렉토리 | 언제 읽나 | 내용 |
 |----------|----------|------|
-| [memory/prd/](memory/prd/AGENTS.md) | 요구사항 확인 시 | 프로젝트 요구사항, 제품/업무 맥락, 현재 상태 |
-| [memory/adr/](memory/adr/AGENTS.md) | 코드 변경·배포 시 | 확정된 컨벤션, 배포 규칙, 아키텍처 결정 |
-| [memory/issues/](memory/issues/AGENTS.md) | 디버깅·장애 대응 시 | 과거 이슈, 버그 원인, 해결 이력 |
-| [plans/](plans/AGENTS.md) | 큰 작업·아키텍처 변경 전 | dated plan과 독립 실행 step |
+| [docs/memory/prd/](docs/memory/prd/AGENTS.md) | 요구사항 확인 시 | 프로젝트 요구사항, 제품/업무 맥락, 현재 상태 |
+| [docs/memory/adr/](docs/memory/adr/AGENTS.md) | 코드 변경·배포 시 | 확정된 컨벤션, 배포 규칙, 아키텍처 결정 |
+| [docs/memory/issues/](docs/memory/issues/AGENTS.md) | 디버깅·장애 대응 시 | 과거 이슈, 버그 원인, 해결 이력 |
+| [docs/plans/](docs/plans/AGENTS.md) | 큰 작업·아키텍처 변경 전 | dated plan과 독립 실행 step |
 
 ### 기록 규칙
 
 **작업 완료 후** 발견한 사실을 반드시 기록합니다:
 
-1. **요구사항/프로젝트 상태 변경** → `memory/prd/` 갱신
-2. **확정된 규칙/패턴/아키텍처 결정** → `memory/adr/`에 기록
-3. **이슈/버그/발견사항** → `memory/issues/`에 날짜 역순으로 추가
-4. **큰 작업 계획** → `plans/YYYY-MM-DD-{plan-name}/`에 작성 후 승인
+1. **요구사항/프로젝트 상태 변경** → `docs/memory/prd/` 갱신
+2. **확정된 규칙/패턴/아키텍처 결정** → `docs/memory/adr/`에 기록
+3. **이슈/버그/발견사항** → `docs/memory/issues/`에 날짜 역순으로 추가
+4. **큰 작업 계획** → `docs/plans/YYYY-MM-DD-{plan-name}/`에 작성 후 승인
 
 이슈 기록 양식:
 ```
@@ -51,8 +51,8 @@ UI 작업 시에는 [DESIGN.md](memory/prd/DESIGN.md)와 해당 기능 PRD의 `U
 
 ## Plans
 
-큰 작업이나 아키텍처 변경 전에는 `plans/YYYY-MM-DD-{plan-name}/`에 plan과 step 파일을 작성하고 유저 승인을 받습니다.
-- [AGENTS.md](plans/AGENTS.md)를 읽고 [TEMPLATE.md](plans/TEMPLATE.md) 양식을 사용합니다.
+큰 작업이나 아키텍처 변경 전에는 `docs/plans/YYYY-MM-DD-{plan-name}/`에 plan과 step 파일을 작성하고 유저 승인을 받습니다.
+- [AGENTS.md](docs/plans/AGENTS.md)를 읽고 [TEMPLATE.md](docs/plans/TEMPLATE.md) 양식을 사용합니다.
 - 각 `stepN-{slug}.md`는 독립 세션에서 실행 가능하도록 `Read First`, `Task`, `Acceptance Criteria`를 포함합니다.
 
 ## Working Rules
